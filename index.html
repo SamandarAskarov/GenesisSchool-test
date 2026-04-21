@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Genesis Education — Toshkentdagi yetakchi xususiy maktab. Bolangizni eng yaxshi ta'lim muhitiga qabul qiling.">
+<meta name="keywords" content="Genesis Education, Toshkent, xususiy maktab, boshlang'ich maktab, bog'cha, private school Tashkent">
+<title>Genesis Education — Where Future Leaders Begin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     CSS VARIABLES & RESET
+  ============================================================ */
+  :root {
+    --red: #C8202F;
+    --red-light: #e8424f;
+    --red-dark: #a01820;
+    --navy: #1A2B4A;
+    --navy-light: #2a3f6a;
+    --navy-muted: #4a5d7a;
+    --white: #ffffff;
+    --off-white: #F8F7F5;
+    --light-grey: #EEF0F3;
+    --border: #DDE1E8;
+    --text-dark: #1A2B4A;
+    --text-body: #3d4f66;
+    --text-muted: #7a8ba0;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --shadow-sm: 0 2px 12px rgba(26,43,74,0.07);
+    --shadow-md: 0 8px 32px rgba(26,43,74,0.12);
+    --shadow-lg: 0 20px 60px rgba(26,43,74,0.15);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--text-body);
+    background: var(--white);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ============================================================
+     UTILITY
+  ============================================================ */
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 96px 0; }
+  .section--alt { background: var(--off-white); }
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.22;
+    max-width: 680px;
+    margin-bottom: 20px;
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 580px;
+    line-height: 1.75;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    border-color: var(--red);
+  }
+  .btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,32,47,0.3); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255,255,255,0.7);
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+  .btn-navy {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+  }
+  .btn-navy:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+  /* ============================================================
+     LANGUAGE NOT ACTIVE
+  ============================================================ */
+  [data-lang] { display: none; }
+  .lang-uz [data-lang="uz"],
+  .lang-ru [data-lang="ru"],
+  .lang-en [data-lang="en"] { display: block; }
+  .lang-uz [data-lang-inline="uz"],
+  .lang-ru [data-lang-inline="ru"],
+  .lang-en [data-lang-inline="en"] { display: inline; }
+  [data-lang-inline] { display: none; }
+
+  /* ============================================================
+     HEADER / NAV
+  ============================================================ */
+  #header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+  }
+  #header.scrolled { box-shadow: var(--shadow-sm); }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 74px;
+    gap: 24px;
+  }
+
+  /* LOGO */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .logo-mark {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+  .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
+  .logo-main {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+  }
+  .logo-sub {
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* NAV LINKS */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--navy-muted);
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: var(--transition);
+  }
+  .nav-links a:hover { color: var(--navy); background: var(--light-grey); }
+
+  /* LANG SWITCHER */
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 4px;
+    background: var(--off-white);
+  }
+  .lang-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    transition: var(--transition);
+    font-family: var(--font-sans);
+  }
+  .lang-btn.active { background: var(--white); color: var(--navy); box-shadow: var(--shadow-sm); }
+  .lang-btn:hover:not(.active) { color: var(--navy); }
+
+  /* NAV RIGHT */
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .nav-cta { padding: 10px 22px; font-size: 0.84rem; }
+
+  /* MOBILE MENU */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    border: none;
+    background: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: var(--transition);
+  }
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 74px; left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    padding: 20px 24px 28px;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul { list-style: none; margin-bottom: 20px; }
+  .mobile-menu ul li a {
+    display: block;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--navy);
+    border-bottom: 1px solid var(--light-grey);
+  }
+  .mobile-lang { display: flex; gap: 8px; margin-bottom: 16px; }
+
+  /* ============================================================
+     HERO
+  ============================================================ */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--navy);
+    padding-top: 74px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(135deg, rgba(26,43,74,0.92) 0%, rgba(26,43,74,0.75) 50%, rgba(26,43,74,0.65) 100%);
+    z-index: 1;
+  }
+  .hero-image-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80') center/cover no-repeat;
+    z-index: 0;
+    transform: scale(1.05);
+    animation: heroZoom 20s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.12); }
+  }
+  .hero-accent {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--red-light), transparent);
+    z-index: 2;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+    padding: 60px 0;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,32,47,0.15);
+    border: 1px solid rgba(200,32,47,0.4);
+    border-radius: 100px;
+    padding: 6px 16px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+  .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero-badge span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 22px;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+  .hero-title em { color: var(--red); font-style: normal; }
+  .hero-subtitle {
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: rgba(255,255,255,0.75);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s ease 0.6s both;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.8s both;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    animation: fadeUp 0.8s ease 1s both;
+  }
+  .hero-stat-num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============================================================
+     ABOUT
+  ============================================================ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .about-image-wrap {
+    position: relative;
+  }
+  .about-img-main {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  .about-img-badge {
+    position: absolute;
+    bottom: -24px;
+    right: -24px;
+    background: var(--red);
+    color: var(--white);
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .about-img-badge strong {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+  .about-img-badge span { font-size: 0.75rem; letter-spacing: 0.08em; opacity: 0.9; }
+  .about-body { padding-left: 16px; }
+  .about-body p { color: var(--text-body); line-height: 1.8; margin-bottom: 16px; }
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: var(--off-white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+  }
+  .pillar:hover { border-color: var(--red); box-shadow: var(--shadow-sm); }
+  .pillar-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--red);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .pillar-icon svg { width: 18px; height: 18px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .pillar-text strong { display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .pillar-text span { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ============================================================
+     PROGRAMS
+  ============================================================ */
+  .programs-header { text-align: center; margin-bottom: 56px; }
+  .programs-header .section-subtitle { margin: 0 auto; }
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .program-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    position: relative;
+  }
+  .program-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
+  .program-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  .program-body { padding: 28px; }
+  .program-age {
+    display: inline-block;
+    background: rgba(200,32,47,0.08);
+    color: var(--red);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .program-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .program-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+  .program-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--red);
+    transition: var(--transition);
+  }
+  .program-link:hover { gap: 10px; }
+  .program-link svg { width: 14px; height: 14px; }
+
+  /* ============================================================
+     WHY CHOOSE US
+  ============================================================ */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .why-features { display: flex; flex-direction: column; gap: 20px; }
+  .why-feature {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+  }
+  .why-feature:hover { border-color: var(--red); transform: translateX(6px); box-shadow: var(--shadow-sm); }
+  .why-feature-num {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--light-grey);
+    line-height: 1;
+    min-width: 48px;
+  }
+  .why-feature-text strong { display: block; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+  .why-feature-text p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+  .why-image {
+    position: relative;
+    height: 520px;
+  }
+  .why-img-a {
+    position: absolute;
+    top: 0; left: 0;
+    width: 68%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  .why-img-b {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 52%;
+    height: 52%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 4px solid var(--white);
+  }
+
+  /* ============================================================
+     GALLERY
+  ============================================================ */
+  .gallery-header { text-align: center; margin-bottom: 48px; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 12px;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .gallery-item:first-child { grid-row: span 2; }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+    min-height: 200px;
+  }
+  .gallery-item:first-child img { min-height: 420px; }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,43,74,0.6), transparent);
+    opacity: 0;
+    transition: var(--transition);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-zoom {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gallery-zoom svg { width: 16px; height: 16px; stroke: var(--navy); fill: none; stroke-width: 2; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(10,18,30,0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    cursor: pointer;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: var(--radius); }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 20px;
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.1);
+    border: none; cursor: pointer; border-radius: 50%;
+    color: white; font-size: 1.4rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ============================================================
+     TESTIMONIALS
+  ============================================================ */
+  .testimonials-header { text-align: center; margin-bottom: 52px; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    position: relative;
+  }
+  .testimonial-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+  .testimonial-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 18px;
+  }
+  .testimonial-stars svg { width: 16px; height: 16px; fill: #f5a623; stroke: none; }
+  .testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonial-text::before { content: '\201C'; font-family: var(--font-serif); font-size: 2.5rem; color: var(--red); line-height: 0; vertical-align: -12px; margin-right: 4px; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--light-grey);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 1rem;
+  }
+  .testimonial-name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+  .testimonial-role { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ============================================================
+     CTA BANNER
+  ============================================================ */
+  #cta-banner {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0;
+  }
+  .cta-bg-pattern {
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(200,32,47,0.08) 100%);
+    pointer-events: none;
+  }
+  .cta-banner-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .cta-banner-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .cta-banner-sub { color: rgba(255,255,255,0.6); font-size: 1rem; }
+  .cta-banner-btns { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
+  .btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border-color: #25D366;
+  }
+  .btn-whatsapp:hover { background: #1db954; border-color: #1db954; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+  .btn-telegram {
+    background: #2AABEE;
+    color: white;
+    border-color: #2AABEE;
+  }
+  .btn-telegram:hover { background: #1a9bd8; border-color: #1a9bd8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,171,238,0.3); }
+
+  /* ============================================================
+     CONTACT
+  ============================================================ */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .contact-info { }
+  .contact-detail {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-detail:last-of-type { border-bottom: none; }
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: rgba(200,32,47,0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 20px; height: 20px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-detail strong { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .contact-detail a, .contact-detail span { font-size: 1rem; color: var(--navy); font-weight: 500; }
+  .contact-detail a:hover { color: var(--red); }
+  .map-wrap {
+    margin-top: 28px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .map-wrap iframe { width: 100%; height: 260px; border: none; display: block; }
+
+  /* FORM */
+  .contact-form-wrap {
+    background: var(--off-white);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .form-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; letter-spacing: 0.04em; }
+  .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    color: var(--navy);
+    background: var(--white);
+    transition: var(--transition);
+    outline: none;
+  }
+  .form-control:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,43,74,0.07); }
+  textarea.form-control { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; padding: 15px; font-size: 0.95rem; margin-top: 8px; border-radius: 8px; }
+  .form-success {
+    display: none;
+    background: rgba(34,197,94,0.1);
+    border: 1px solid rgba(34,197,94,0.3);
+    color: #166534;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+
+  /* ============================================================
+     FOOTER
+  ============================================================ */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    padding: 64px 0 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand .logo-main { color: var(--white); }
+  .footer-brand .logo-sub { color: rgba(255,255,255,0.4); }
+  .footer-tagline {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.55);
+    margin-top: 16px;
+    max-width: 260px;
+  }
+  .footer-col h4 {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.65);
+    transition: var(--transition);
+  }
+  .footer-col ul a:hover { color: var(--white); }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ============================================================
+     SCROLL ANIMATION
+  ============================================================ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+  @media (max-width: 1024px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-body { padding-left: 0; }
+    .about-img-main { height: 340px; }
+    .about-img-badge { bottom: -20px; right: 0; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-image { height: 340px; margin-bottom: 20px; order: -1; }
+    .programs-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 64px 0; }
+    .nav-links, .nav-right .btn-primary { display: none; }
+    .nav-right { gap: 8px; }
+    .hamburger { display: flex; }
+    .programs-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-row: auto; }
+    .gallery-item:first-child img { min-height: 200px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .cta-banner-inner { flex-direction: column; text-align: center; }
+    .cta-banner-btns { justify-content: center; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; }
+    .about-pillars { grid-template-columns: 1fr; }
+    .why-image { height: 260px; }
+    .why-img-a { width: 72%; height: 78%; }
+    .why-img-b { width: 55%; height: 55%; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-cta { flex-direction: column; }
+    .hero-cta .btn { width: 100%; justify-content: center; }
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body class="lang-uz">
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header id="header">
+  <div class="container">
+    <nav class="nav-inner">
+      <!-- LOGO -->
+      <a href="#" class="logo">
+        <svg class="logo-mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="44" height="44" rx="8" fill="#1A2B4A"/>
+          <path d="M22 6C13.163 6 6 13.163 6 22C6 30.837 13.163 38 22 38C30.837 38 38 30.837 38 22C38 13.163 30.837 6 22 6Z" fill="#C8202F" opacity="0.15"/>
+          <text x="9" y="29" font-family="Georgia, serif" font-size="17" font-weight="700" fill="#C8202F">GE</text>
+        </svg>
+        <div class="logo-text-wrap">
+          <span class="logo-main">Genesis</span>
+          <span class="logo-sub">Education</span>
+        </div>
+      </a>
+
+      <!-- DESKTOP NAV -->
+      <ul class="nav-links">
+        <li><a href="#about"><span data-lang="uz">Haqimizda</span><span data-lang="ru">О нас</span><span data-lang="en">About</span></a></li>
+        <li><a href="#programs"><span data-lang="uz">Dasturlar</span><span data-lang="ru">Программы</span><span data-lang="en">Programs</span></a></li>
+        <li><a href="#gallery"><span data-lang="uz">Galereya</span><span data-lang="ru">Галерея</span><span data-lang="en">Gallery</span></a></li>
+        <li><a href="#testimonials"><span data-lang="uz">Sharhlar</span><span data-lang="ru">Отзывы</span><span data-lang="en">Reviews</span></a></li>
+        <li><a href="#contact"><span data-lang="uz">Aloqa</span><span data-lang="ru">Контакт</span><span data-lang="en">Contact</span></a></li>
+      </ul>
+
+      <div class="nav-right">
+        <!-- LANG SWITCHER -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" onclick="setLang('uz')">UZ</button>
+          <button class="lang-btn" onclick="setLang('ru')">RU</button>
+          <button class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="#contact" class="btn btn-primary nav-cta">
+          <span data-lang="uz">Qabul</span>
+          <span data-lang="ru">Записаться</span>
+          <span data-lang="en">Enroll</span>
+        </a>
+        <!-- HAMBURGER -->
+        <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-lang">
+      <button class="lang-btn active" onclick="setLang('uz')">UZ</button>
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <ul>
+      <li><a href="#about" onclick="closeMobile()"><span data-lang="uz">Haqimizda</span><span data-lang="ru">О нас</span><span data-lang="en">About</span></a></li>
+      <li><a href="#programs" onclick="closeMobile()"><span data-lang="uz">Dasturlar</span><span data-lang="ru">Программы</span><span data-lang="en">Programs</span></a></li>
+      <li><a href="#gallery" onclick="closeMobile()"><span data-lang="uz">Galereya</span><span data-lang="ru">Галерея</span><span data-lang="en">Gallery</span></a></li>
+      <li><a href="#testimonials" onclick="closeMobile()"><span data-lang="uz">Sharhlar</span><span data-lang="ru">Отзывы</span><span data-lang="en">Reviews</span></a></li>
+      <li><a href="#contact" onclick="closeMobile()"><span data-lang="uz">Aloqa</span><span data-lang="ru">Контакт</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center" onclick="closeMobile()">
+      <span data-lang="uz">Qabul hujjatlari</span>
+      <span data-lang="ru">Записаться</span>
+      <span data-lang="en">Enroll Now</span>
+    </a>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero">
+  <div class="hero-image-bg"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-accent"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span data-lang="uz">Toshkentdagi eng yaxshi xususiy ta'lim muassasasi</span>
+        <span data-lang="ru">Лучшее частное образование в Ташкенте</span>
+        <span data-lang="en">Premium Private Education in Tashkent</span>
+      </div>
+      <h1 class="hero-title">
+        <span data-lang="uz">Kelajak <em>Yetakchilar</em><br>Shu Yerdan Boshlanadi</span>
+        <span data-lang="ru">Здесь начинается<br>путь <em>лидеров</em></span>
+        <span data-lang="en">Where Future <em>Leaders</em><br>Begin</span>
+      </h1>
+      <p class="hero-subtitle">
+        <span data-lang="uz">Genesis Education — bolangizning har tomonlama rivojlanishi uchun ideal muhit. Professionallik, mehr-oqibat va innovatsion yondashuv bilan biz har bir bolaning iste'dodini ochib beramiz.</span>
+        <span data-lang="ru">Genesis Education — идеальная среда для всестороннего развития вашего ребёнка. Профессионализм, забота и инновационный подход помогают раскрыть потенциал каждого.</span>
+        <span data-lang="en">Genesis Education is an ideal environment for your child's holistic development. Professionalism, care, and an innovative approach help us unlock every child's potential.</span>
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span data-lang="uz">Qabul uchun murojaat</span>
+          <span data-lang="ru">Записаться</span>
+          <span data-lang="en">Enroll Now</span>
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span data-lang="uz">Maktabga tashrif</span>
+          <span data-lang="ru">Запись на визит</span>
+          <span data-lang="en">Book a Visit</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-label"><span data-lang="uz">O'quvchilar</span><span data-lang="ru">Учеников</span><span data-lang="en">Students</span></div>
+        </div>
+        <div>
+          <div class="hero-stat-num">50+</div>
+          <div class="hero-stat-label"><span data-lang="uz">Tajribali o'qituvchilar</span><span data-lang="ru">Педагогов</span><span data-lang="en">Expert Teachers</span></div>
+        </div>
+        <div>
+          <div class="hero-stat-num">10+</div>
+          <div class="hero-stat-label"><span data-lang="uz">Yillik tajriba</span><span data-lang="ru">Лет опыта</span><span data-lang="en">Years of Excellence</span></div>
+        </div>
+        <div>
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-label"><span data-lang="uz">Ta'lim bosqichi</span><span data-lang="ru">Уровня обучения</span><span data-lang="en">Education Levels</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div class="about-image-wrap">
+        <img class="about-img-main" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=80" alt="Genesis Education students">
+        <div class="about-img-badge">
+          <strong>2013</strong>
+          <span data-lang="uz">dan beri</span>
+          <span data-lang="ru">с года</span>
+          <span data-lang="en">Since</span>
+        </div>
+      </div>
+      <div class="about-body">
+        <span class="section-label">
+          <span data-lang="uz">Biz haqimizda</span>
+          <span data-lang="ru">О нас</span>
+          <span data-lang="en">Our Story</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="uz">Har bir bola — alohida dunyo</span>
+          <span data-lang="ru">Каждый ребёнок — отдельный мир</span>
+          <span data-lang="en">Every Child Is a Unique World</span>
+        </h2>
+        <p>
+          <span data-lang="uz">Genesis Education — 2013-yildan buyon Toshkentda faoliyat yuritib kelayotgan yetakchi xususiy ta'lim muassasasi. Biz bolalar uchun nafaqat bilim, balki hayotga tayyor bo'lish muhitini yaratamiz.</span>
+          <span data-lang="ru">Genesis Education — ведущее частное учебное заведение Ташкента, работающее с 2013 года. Мы создаём не просто образовательную среду, а пространство для подготовки к жизни.</span>
+          <span data-lang="en">Genesis Education has been Tashkent's leading private institution since 2013. We create not just an educational environment, but a space that prepares children for life.</span>
+        </p>
+        <p>
+          <span data-lang="uz">Bizning maqsadimiz — har bir bolaning ichki qobiliyatini ochib berish, unga mustaqil fikrlash va ijodiy yondashuv ko'nikmalarini singdirish. Professional o'qituvchilarimiz va zamonaviy o'quv dasturlarimiz orqali biz buni amalga oshiramiz.</span>
+          <span data-lang="ru">Наша цель — раскрыть внутренний потенциал каждого ребёнка, привить навыки самостоятельного мышления и творческого подхода. Это достигается благодаря нашим опытным педагогам и современным программам.</span>
+          <span data-lang="en">Our goal is to unlock every child's inner potential, instilling skills of independent thinking and creative approach. This is achieved through our experienced teachers and modern curricula.</span>
+        </p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="pillar-text">
+              <strong><span data-lang="uz">Mehr va g'amxo'rlik</span><span data-lang="ru">Забота и тепло</span><span data-lang="en">Care & Warmth</span></strong>
+              <span><span data-lang="uz">Xavfsiz, iliq muhit</span><span data-lang="ru">Безопасная среда</span><span data-lang="en">Safe, warm environment</span></span>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div class="pillar-text">
+              <strong><span data-lang="uz">Professional o'qituvchilar</span><span data-lang="ru">Профессионалы</span><span data-lang="en">Expert Teachers</span></strong>
+              <span><span data-lang="uz">Tajribali pedagog jamoa</span><span data-lang="ru">Квалифицированный коллектив</span><span data-lang="en">Qualified faculty</span></span>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="pillar-text">
+              <strong><span data-lang="uz">Zamonaviy dastur</span><span data-lang="ru">Современная программа</span><span data-lang="en">Modern Curriculum</span></strong>
+              <span><span data-lang="uz">Xalqaro standartlar</span><span data-lang="ru">Международные стандарты</span><span data-lang="en">International standards</span></span>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="pillar-text">
+              <strong><span data-lang="uz">Xavfsiz muhit</span><span data-lang="ru">Безопасность</span><span data-lang="en">Safe Environment</span></strong>
+              <span><span data-lang="uz">Nazorat va himoya</span><span data-lang="ru">Защита и контроль</span><span data-lang="en">Security & supervision</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROGRAMS
+============================================================ -->
+<section id="programs" class="section section--alt">
+  <div class="container">
+    <div class="programs-header reveal">
+      <span class="section-label">
+        <span data-lang="uz">Ta'lim dasturlari</span>
+        <span data-lang="ru">Наши программы</span>
+        <span data-lang="en">Our Programs</span>
+      </span>
+      <h2 class="section-title" style="margin:0 auto 16px;text-align:center">
+        <span data-lang="uz">Har yoshdagi bola uchun eng yaxshi dastur</span>
+        <span data-lang="ru">Лучшая программа для каждого возраста</span>
+        <span data-lang="en">The Best Program for Every Age</span>
+      </h2>
+      <p class="section-subtitle" style="text-align:center">
+        <span data-lang="uz">Bolangizning yoshiga va rivojlanish bosqichiga mos keladigan maxsus ta'lim dasturlarini taklif etamiz.</span>
+        <span data-lang="ru">Мы предлагаем специальные образовательные программы, соответствующие возрасту и этапу развития вашего ребёнка.</span>
+        <span data-lang="en">We offer specialized educational programs tailored to your child's age and developmental stage.</span>
+      </p>
+    </div>
+    <div class="programs-grid">
+      <!-- Kindergarten -->
+      <div class="program-card reveal">
+        <img class="program-img" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&q=80" alt="Kindergarten">
+        <div class="program-body">
+          <span class="program-age">
+            <span data-lang="uz">2 – 6 yosh</span>
+            <span data-lang="ru">2 – 6 лет</span>
+            <span data-lang="en">Ages 2 – 6</span>
+          </span>
+          <div class="program-title">
+            <span data-lang="uz">Bog'cha</span>
+            <span data-lang="ru">Детский сад</span>
+            <span data-lang="en">Kindergarten</span>
+          </div>
+          <p class="program-desc">
+            <span data-lang="uz">O'yin va ijodiy faoliyat orqali bolaning kognitiv, ijtimoiy va emotsional rivojlanishini ta'minlaydigan mehribon muhit.</span>
+            <span data-lang="ru">Тёплая среда, обеспечивающая когнитивное, социальное и эмоциональное развитие через игру и творческую деятельность.</span>
+            <span data-lang="en">A nurturing environment fostering cognitive, social, and emotional development through play and creative activities.</span>
+          </p>
+          <a href="#contact" class="program-link">
+            <span data-lang="uz">Batafsil</span><span data-lang="ru">Подробнее</span><span data-lang="en">Learn More</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Primary School -->
+      <div class="program-card reveal">
+        <img class="program-img" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=80" alt="Primary School">
+        <div class="program-body">
+          <span class="program-age">
+            <span data-lang="uz">6 – 11 yosh</span>
+            <span data-lang="ru">6 – 11 лет</span>
+            <span data-lang="en">Ages 6 – 11</span>
+          </span>
+          <div class="program-title">
+            <span data-lang="uz">Boshlang'ich maktab</span>
+            <span data-lang="ru">Начальная школа</span>
+            <span data-lang="en">Primary School</span>
+          </div>
+          <p class="program-desc">
+            <span data-lang="uz">Kuchli akademik asos, tanqidiy fikrlash va ijodiy qobiliyatlarni rivojlantirishga yo'naltirilgan dastur.</span>
+            <span data-lang="ru">Программа, направленная на формирование прочной академической базы, критического мышления и творческих способностей.</span>
+            <span data-lang="en">A program focused on building strong academic foundations, critical thinking, and creative abilities.</span>
+          </p>
+          <a href="#contact" class="program-link">
+            <span data-lang="uz">Batafsil</span><span data-lang="ru">Подробнее</span><span data-lang="en">Learn More</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Private School -->
+      <div class="program-card reveal">
+        <img class="program-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="Private School">
+        <div class="program-body">
+          <span class="program-age">
+            <span data-lang="uz">11 – 18 yosh</span>
+            <span data-lang="ru">11 – 18 лет</span>
+            <span data-lang="en">Ages 11 – 18</span>
+          </span>
+          <div class="program-title">
+            <span data-lang="uz">Xususiy maktab</span>
+            <span data-lang="ru">Частная школа</span>
+            <span data-lang="en">Private School</span>
+          </div>
+          <p class="program-desc">
+            <span data-lang="uz">Oliy ta'limga tayyorlovchi keng qamrovli akademik dastur. Xalqaro olimpiadalar, loyihalar va kasbiy yo'nalishlar.</span>
+            <span data-lang="ru">Всесторонняя академическая программа, готовящая к высшему образованию. Международные олимпиады, проекты и профессиональные направления.</span>
+            <span data-lang="en">A comprehensive academic program preparing for higher education. International olympiads, projects, and career pathways.</span>
+          </p>
+          <a href="#contact" class="program-link">
+            <span data-lang="uz">Batafsil</span><span data-lang="ru">Подробнее</span><span data-lang="en">Learn More</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY CHOOSE US
+============================================================ -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-image reveal">
+        <img class="why-img-a" src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=700&q=80" alt="Students learning">
+        <img class="why-img-b" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" alt="Classroom">
+      </div>
+      <div class="reveal">
+        <span class="section-label">
+          <span data-lang="uz">Nima uchun biz?</span>
+          <span data-lang="ru">Почему мы?</span>
+          <span data-lang="en">Why Choose Us</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="uz">Bolangiz uchun eng yaxshi tanlov</span>
+          <span data-lang="ru">Лучший выбор для вашего ребёнка</span>
+          <span data-lang="en">The Best Choice for Your Child</span>
+        </h2>
+        <div class="why-features">
+          <div class="why-feature">
+            <div class="why-feature-num">01</div>
+            <div class="why-feature-text">
+              <strong><span data-lang="uz">Kichik sinf xonalari</span><span data-lang="ru">Небольшие классы</span><span data-lang="en">Small Class Sizes</span></strong>
+              <p><span data-lang="uz">Har bir o'quvchiga o'qituvchining individual e'tibori. Sinfda 15 nafardan ko'p emas — bu yaxshiroq o'zlashtirishni ta'minlaydi.</span><span data-lang="ru">Индивидуальное внимание учителя каждому ученику. Не более 15 человек в классе — это обеспечивает лучшее усвоение материала.</span><span data-lang="en">Individual teacher attention for every student. No more than 15 per class — ensuring better understanding and results.</span></p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-num">02</div>
+            <div class="why-feature-text">
+              <strong><span data-lang="uz">Individual yondashuv</span><span data-lang="ru">Индивидуальный подход</span><span data-lang="en">Individual Approach</span></strong>
+              <p><span data-lang="uz">Har bir bolaning o'ziga xos xususiyatlarini hisobga olgan holda, shaxsiy ta'lim rejasi tuziladi.</span><span data-lang="ru">Учитывая особенности каждого ребёнка, разрабатывается персональный план обучения.</span><span data-lang="en">Taking each child's unique qualities into account, a personalized learning plan is developed.</span></p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-num">03</div>
+            <div class="why-feature-text">
+              <strong><span data-lang="uz">Malakali o'qituvchilar</span><span data-lang="ru">Квалифицированные педагоги</span><span data-lang="en">Qualified Teachers</span></strong>
+              <p><span data-lang="uz">Xalqaro sertifikatlarga ega, tajribali va ilhomli o'qituvchilar jamoamiz har bir o'quvchi uchun ibrat bo'lib xizmat qiladi.</span><span data-lang="ru">Наш коллектив опытных педагогов с международными сертификатами — пример для каждого ученика.</span><span data-lang="en">Our experienced team of internationally certified teachers serves as an inspiration for every student.</span></p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-num">04</div>
+            <div class="why-feature-text">
+              <strong><span data-lang="uz">Xavfsiz muhit</span><span data-lang="ru">Безопасная среда</span><span data-lang="en">Safe Environment</span></strong>
+              <p><span data-lang="uz">24/7 xavfsizlik tizimi, nazorat kameralari va maxsus protokollar orqali bolangizning xavfsizligi ta'minlanadi.</span><span data-lang="ru">Круглосуточная система безопасности, камеры наблюдения и специальные протоколы обеспечивают безопасность вашего ребёнка.</span><span data-lang="en">24/7 security systems, surveillance cameras, and special protocols ensure your child's complete safety.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY
+============================================================ -->
+<section id="gallery" class="section section--alt">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <span class="section-label">
+        <span data-lang="uz">Galereya</span>
+        <span data-lang="ru">Галерея</span>
+        <span data-lang="en">Gallery</span>
+      </span>
+      <h2 class="section-title" style="margin:0 auto 10px;text-align:center">
+        <span data-lang="uz">Hayotimizdan lavhalar</span>
+        <span data-lang="ru">Моменты нашей жизни</span>
+        <span data-lang="en">Moments from Our World</span>
+      </h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Students">
+        <div class="gallery-overlay"><div class="gallery-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Library">
+        <div class="gallery-overlay"><div class="gallery-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1564979395581-7b5e65cef666?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1564979395581-7b5e65cef666?w=600&q=80" alt="Art class">
+        <div class="gallery-overlay"><div class="gallery-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1588072432836-e10032774350?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80" alt="Science">
+        <div class="gallery-overlay"><div class="gallery-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&q=80" alt="Sports">
+        <div class="gallery-overlay"><div class="gallery-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- ============================================================
+     TESTIMONIALS
+============================================================ -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <span class="section-label">
+        <span data-lang="uz">Ota-onalar fikri</span>
+        <span data-lang="ru">Отзывы родителей</span>
+        <span data-lang="en">Parent Testimonials</span>
+      </span>
+      <h2 class="section-title" style="margin:0 auto;text-align:center">
+        <span data-lang="uz">Bolalari Genesis-da o'qiyotgan ota-onalar nima deydi?</span>
+        <span data-lang="ru">Что говорят родители, чьи дети учатся в Genesis?</span>
+        <span data-lang="en">What Parents of Genesis Students Say</span>
+      </h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">
+          <span data-lang="uz">Qizim Genesis-ga kelib tubdan o'zgardi. O'qituvchilar unga nafaqat bilim, balki ishonch va mustaqillik ham berishdi. Har kuni maktabga borishni xohlaydi!</span>
+          <span data-lang="ru">Моя дочь кардинально изменилась после поступления в Genesis. Учителя дали ей не только знания, но и уверенность в себе. Каждый день она с радостью идёт в школу!</span>
+          <span data-lang="en">My daughter changed completely after joining Genesis. The teachers gave her not just knowledge, but confidence and independence. She looks forward to school every day!</span>
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">ZA</div>
+          <div>
+            <div class="testimonial-name">Zulfiya Axmedova</div>
+            <div class="testimonial-role"><span data-lang="uz">Ona, 4-sinf o'quvchisi onasi</span><span data-lang="ru">Мама ученицы 4 класса</span><span data-lang="en">Mother of a 4th grade student</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">
+          <span data-lang="uz">O'g'lim bog'chadan maktabga o'tganida xavotir oluvdik. Lekin Genesis jamoasi bu jarayonni juda yumshoq va quvonchli qildi. Minnatdorman!</span>
+          <span data-lang="ru">Мы переживали за переход сына из детского сада в школу. Но коллектив Genesis сделал этот процесс мягким и радостным. Очень благодарны!</span>
+          <span data-lang="en">We were worried about our son's transition from kindergarten to school. But the Genesis team made this process smooth and joyful. Very grateful!</span>
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SK</div>
+          <div>
+            <div class="testimonial-name">Sardor Karimov</div>
+            <div class="testimonial-role"><span data-lang="uz">Ota, 1-sinf o'quvchisi otasi</span><span data-lang="ru">Папа ученика 1 класса</span><span data-lang="en">Father of a 1st grade student</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">
+          <span data-lang="uz">Ikki farzandim ham Genesis-da ta'lim olmoqda. Maktab ma'muriyati doimo aloqada, har qanday savolga tez javob berishadi. Bu menga katta ishonch beradi.</span>
+          <span data-lang="ru">Оба моих ребёнка учатся в Genesis. Администрация всегда на связи и быстро отвечает на любые вопросы. Это вселяет в меня огромную уверенность.</span>
+          <span data-lang="en">Both my children study at Genesis. The administration is always reachable and quickly responds to any questions. This gives me great confidence.</span>
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MR</div>
+          <div>
+            <div class="testimonial-name">Malika Rashidova</div>
+            <div class="testimonial-role"><span data-lang="uz">Ona, 2 farzand onasi</span><span data-lang="ru">Мама двоих детей</span><span data-lang="en">Mother of two students</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BANNER
+============================================================ -->
+<section id="cta-banner">
+  <div class="cta-bg-pattern"></div>
+  <div class="container">
+    <div class="cta-banner-inner reveal">
+      <div>
+        <h2 class="cta-banner-title">
+          <span data-lang="uz">Bolangizga eng yaxshi boshlanishni bering</span>
+          <span data-lang="ru">Дайте ребёнку лучший старт в жизни</span>
+          <span data-lang="en">Give Your Child the Best Start</span>
+        </h2>
+        <p class="cta-banner-sub">
+          <span data-lang="uz">Bugun biz bilan bog'laning — bepul konsultatsiya oling.</span>
+          <span data-lang="ru">Свяжитесь с нами сегодня — получите бесплатную консультацию.</span>
+          <span data-lang="en">Contact us today — get a free consultation.</span>
+        </p>
+      </div>
+      <div class="cta-banner-btns">
+        <a href="https://wa.me/998712534043" target="_blank" class="btn btn-whatsapp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://t.me/genesiseducation_uz" target="_blank" class="btn btn-telegram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section id="contact" class="section section--alt">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:52px">
+      <span class="section-label">
+        <span data-lang="uz">Bog'lanish</span>
+        <span data-lang="ru">Контакты</span>
+        <span data-lang="en">Contact Us</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="uz">Biz bilan bog'laning</span>
+        <span data-lang="ru">Свяжитесь с нами</span>
+        <span data-lang="en">Get in Touch</span>
+      </h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.07 6.07l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <strong><span data-lang="uz">Telefon</span><span data-lang="ru">Телефон</span><span data-lang="en">Phone</span></strong>
+            <a href="tel:+998712534043">+998 71 253 40 43</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <strong><span data-lang="uz">Manzil</span><span data-lang="ru">Адрес</span><span data-lang="en">Address</span></strong>
+            <span>Toshkent, Labihovuz ko'chasi</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div>
+            <strong><span data-lang="uz">Ish vaqti</span><span data-lang="ru">Часы работы</span><span data-lang="en">Working Hours</span></strong>
+            <span><span data-lang="uz">Dush–Jum: 8:00 – 18:00</span><span data-lang="ru">Пн–Пт: 8:00 – 18:00</span><span data-lang="en">Mon–Fri: 8:00 – 18:00</span></span>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.529!2d69.2576!3d41.2995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE3JzU4LjIiTiA2OcKwMTUnMjcuNCJF!5e0!3m2!1sen!2s!4v1234567890"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Genesis Education Location">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3 class="form-title">
+          <span data-lang="uz">Murojaat yuborish</span>
+          <span data-lang="ru">Отправить заявку</span>
+          <span data-lang="en">Send a Request</span>
+        </h3>
+        <form id="contactForm" onsubmit="handleSubmit(event)" >
+          <div class="form-row">
+            <div class="form-group">
+              <label>
+                <span data-lang="uz">Ism</span>
+                <span data-lang="ru">Имя</span>
+                <span data-lang="en">Name</span>
+              </label>
+              <input id="ism" type="text" class="form-control" required placeholder="Asilbek">
+            </div>
+            <div class="form-group">
+              <label>
+                <span data-lang="uz">Telefon</span>
+                <span data-lang="ru">Телефон</span>
+                <span data-lang="en">Phone</span>
+              </label>
+              <input id="tel" type="tel" class="form-control" required placeholder="+998 90 000 00 00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>
+              <span data-lang="uz">Dastur</span>
+              <span data-lang="ru">Программа</span>
+              <span data-lang="en">Program</span>
+            </label>
+            <select id="dastur" class="form-control">
+              <option value="">
+                <span data-lang-inline="uz">Tanlang</span>
+                <span data-lang-inline="ru">Выберите</span>
+                <span data-lang-inline="en">Select</span>
+              </option>
+              <option value="Bog'cha"><span data-lang-inline="uz">Bog'cha (2–6 yosh)</span><span data-lang-inline="ru">Детский сад (2–6 лет)</span><span data-lang-inline="en">Kindergarten (Ages 2–6)</span></option>
+              <option value="Boshlang'ich"><span data-lang-inline="uz">Boshlang'ich maktab (6–11 yosh)</span><span data-lang-inline="ru">Начальная школа (6–11 лет)</span><span data-lang-inline="en">Primary School (Ages 6–11)</span></option>
+              <option value="Xususiy"><span data-lang-inline="uz">Xususiy maktab (11–18 yosh)</span><span data-lang-inline="ru">Частная школа (11–18 лет)</span><span data-lang-inline="en">Private School (Ages 11–18)</span></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>
+              <span data-lang="uz">Xabar</span>
+              <span data-lang="ru">Сообщение</span>
+              <span data-lang="en">Message</span>
+            </label>
+            <textarea id="xabar_matni" class="form-control" placeholder="..."></textarea>
+          </div>
+          <button type="submit" onclick="yubor()" class="btn btn-primary form-submit">
+            <span data-lang="uz">Murojaat yuborish</span>
+            <span data-lang="ru">Отправить заявку</span>
+            <span data-lang="en">Send Request</span>
+          </button>
+          <div class="form-success" id="formSuccess">
+            <span data-lang="uz">✓ Murojaatingiz qabul qilindi! Tez orada siz bilan bog'lanamiz.</span>
+            <span data-lang="ru">✓ Ваша заявка принята! Мы свяжемся с вами в ближайшее время.</span>
+            <span data-lang="en">✓ Your request has been received! We'll be in touch soon.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="margin-bottom:0">
+          <svg class="logo-mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="44" height="44" rx="8" fill="#2a3f6a"/>
+            <path d="M22 6C13.163 6 6 13.163 6 22C6 30.837 13.163 38 22 38C30.837 38 38 30.837 38 22C38 13.163 30.837 6 22 6Z" fill="#C8202F" opacity="0.2"/>
+            <text x="9" y="29" font-family="Georgia, serif" font-size="17" font-weight="700" fill="#C8202F">GE</text>
+          </svg>
+          <div class="logo-text-wrap">
+            <span class="logo-main">Genesis</span>
+            <span class="logo-sub">Education</span>
+          </div>
+        </a>
+        <p class="footer-tagline">
+          <span data-lang="uz">Kelajak yetakchilarini tarbiyalaydigan Toshkentdagi yetakchi xususiy ta'lim muassasasi.</span>
+          <span data-lang="ru">Ведущее частное учебное заведение Ташкента, воспитывающее лидеров будущего.</span>
+          <span data-lang="en">Tashkent's leading private institution nurturing tomorrow's leaders.</span>
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4><span data-lang="uz">Dasturlar</span><span data-lang="ru">Программы</span><span data-lang="en">Programs</span></h4>
+        <ul>
+          <li><a href="#programs"><span data-lang="uz">Bog'cha</span><span data-lang="ru">Детский сад</span><span data-lang="en">Kindergarten</span></a></li>
+          <li><a href="#programs"><span data-lang="uz">Boshlang'ich maktab</span><span data-lang="ru">Начальная школа</span><span data-lang="en">Primary School</span></a></li>
+          <li><a href="#programs"><span data-lang="uz">Xususiy maktab</span><span data-lang="ru">Частная школа</span><span data-lang="en">Private School</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span data-lang="uz">Maktab</span><span data-lang="ru">Школа</span><span data-lang="en">School</span></h4>
+        <ul>
+          <li><a href="#about"><span data-lang="uz">Haqimizda</span><span data-lang="ru">О нас</span><span data-lang="en">About Us</span></a></li>
+          <li><a href="#why"><span data-lang="uz">Nima uchun biz</span><span data-lang="ru">Почему мы</span><span data-lang="en">Why Us</span></a></li>
+          <li><a href="#gallery"><span data-lang="uz">Galereya</span><span data-lang="ru">Галерея</span><span data-lang="en">Gallery</span></a></li>
+          <li><a href="#testimonials"><span data-lang="uz">Sharhlar</span><span data-lang="ru">Отзывы</span><span data-lang="en">Reviews</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span data-lang="uz">Aloqa</span><span data-lang="ru">Контакт</span><span data-lang="en">Contact</span></h4>
+        <ul>
+          <li><a href="tel:+998712534043">+998 71 253 40 43</a></li>
+          <li><a href="#contact">Labihovuz ko'chasi</a></li>
+          <li><a href="https://wa.me/998712534043" target="_blank">WhatsApp</a></li>
+          <li><a href="https://t.me/genesiseducation_uz" target="_blank">Telegram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Genesis Education. <span data-lang="uz">Barcha huquqlar himoyalangan.</span><span data-lang="ru">Все права защищены.</span><span data-lang="en">All rights reserved.</span></span>
+      <span>Toshkent, Labihovuz ko'chasi</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  /* ---- LANGUAGE SWITCHER ---- */
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+    localStorage.setItem('ge-lang', lang);
+  }
+  (function() {
+    const saved = localStorage.getItem('ge-lang') || 'uz';
+    setLang(saved);
+  })();
+
+  /* ---- MOBILE MENU ---- */
+  function toggleMobile() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  /* ---- HEADER SCROLL ---- */
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  /* ---- LIGHTBOX ---- */
+  function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+
+  /* ---- SCROLL REVEAL ---- */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (i * 0.08) + 's';
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  /* ---- FORM ---- */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.textContent = '...';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('formSuccess').style.display = 'block';
+      e.target.reset();
+      btn.disabled = false;
+      btn.innerHTML = '<span data-lang="uz">Murojaat yuborish</span><span data-lang="ru">Отправить заявку</span><span data-lang="en">Send Request</span>';
+      setLang(document.body.className.replace('lang-',''));
+    }, 1200);
+  }
+
+  /* ---- SMOOTH ACTIVE NAV ---- */
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY + 100;
+    sections.forEach(section => {
+      const top = section.offsetTop, height = section.offsetHeight;
+      const link = document.querySelector(`.nav-links a[href="#${section.id}"]`);
+      if (link) link.style.color = scrollY >= top && scrollY < top + height ? 'var(--red)' : '';
+    });
+  });
+
+
+//   document.getElementById('contactform').addEventListener('submit', function(e) {
+//     e.preventDefault(); // Sahifa yangilanib ketishini to'xtatamiz
+
+//     // 1. Ma'lumotlarni yig'ib olamiz
+//     const ism = document.getElementById('ism').value;
+//     const tel = document.getElementById('tel').value;
+//     const xabar = document.getElementById('xabar').value;
+
+//     // 2. Bot ma'lumotlari (O'zingiznikiga almashtiring)
+//     const token = "8242155681:AAHoZXqwMCufFctRjuj3c7iT3VKm1NoIL8Q";
+//     const chat_id = 5948657931;
+
+//     // 3. Xabar ko'rinishi
+//     const text = `🚀 Yangi murojaat!\n\n👤 Ismi: ${ism}\n📞 Tel: ${tel}\n📝 Xabar: ${xabar}`;
+
+//     // 4. Telegramga yuborish (Internet orqali so'rov yuboramiz)
+//     const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(text)}`;
+
+//     fetch(url)
+//     .then(response => {
+//         if(response.ok) {
+//             alert("Murojaatingiz qabul qilindi! Yaqin orada siz bilan bog'lanamiz.");
+//             document.getElementById('murojaatForm').reset(); // Formani tozalash
+//         } else {
+//             alert("Xatolik yuz berdi. Qaytadan urinib ko'ring.");
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Xato:', error);
+//     });
+// });
+
+function yubor() {
+    // 1. Ma'lumotlarni HTML-dagi ID orqali olamiz
+    const ism = document.getElementById('ism').value;
+    const tel = document.getElementById('tel').value;
+    const dastur = document.getElementById('dastur').value;
+    const xabar_matni = document.getElementById('xabar_matni').value;
+
+    // Tekshirish: Ism va Tel bo'sh bo'lmasligi kerak
+    if(ism === "" || tel === "") {
+        alert("Iltimos, ism va telefoningizni kiriting!");
+        return;
+    }
+
+    const token = "8242155681:AAHoZXqwMCufFctRjuj3c7iT3VKm1NoIL8Q";
+    const chat_ids = [5948657931, 1366945441];
+
+    // Xabarni chiroyli ko'rinishga keltiramiz
+    const xabar = `🚀 Yangi murojaat!\n\n` + 
+                  `👤 Ism: ${ism}\n` + 
+                  `📞 Tel: ${tel}\n` + 
+                  `📚 Dastur: ${dastur}\n` + 
+                  `📝 Xabar: ${xabar_matni}`;
+
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_ids[0]}&text=${encodeURIComponent(xabar)}`;
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        if(data.ok) {
+            alert("✓ Murojaatingiz qabul qilindi!");
+            document.getElementById('contactForm').reset(); // Formani tozalash
+        } else {
+            alert("Xatolik! Bot token yoki Chat ID xato.");
+            console.log(data);
+        }
+    })
+    .catch(err => {
+        alert("Internet aloqasini tekshiring!");
+        console.error(err);
+    });
+}
+</script>
+</body>
+</html>
